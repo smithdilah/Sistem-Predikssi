@@ -52,7 +52,6 @@ def add_user_style():
         </style>
     """, unsafe_allow_html=True)
 
-
 # ============================
 # Fungsi konversi nilai
 # ============================
@@ -65,7 +64,6 @@ def nilai_ke_predikat(nilai):
         return 'C'
     else:
         return 'D'
-
 
 # ============================
 # Halaman User
@@ -145,6 +143,7 @@ def user_page():
 
         try:
             hasil = model.predict(df_encoded)[0]
+            hasil = str(hasil)  # ✅ konversi dari numpy.str_ ke string biasa
         except Exception as e:
             st.error(f"Terjadi kesalahan saat prediksi: {e}")
             return
@@ -154,7 +153,7 @@ def user_page():
             "Paket 2": "Paket 2: Geografi, Ekonomi, Kimia, Informatika, PKWU",
             "Paket 3": "Paket 3: Geografi, Ekonomi, Sosiologi, PKWU"
         }
-        hasil_full = paket_mapping.get(hasil, hasil)
+        hasil_full = str(paket_mapping.get(hasil, hasil))  # ✅ pastikan string murni
 
         try:
             insert_prediction(nama, hasil_full)
