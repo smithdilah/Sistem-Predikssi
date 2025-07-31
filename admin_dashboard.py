@@ -110,7 +110,7 @@ def admin_page():
             with st.form("tambah_user_form"):
                 username_new = st.text_input("Username")
                 password_new = st.text_input("Password")
-                role_new = st.selectbox("Role", ["user", "admin"])
+                role_new = st.selectbox("Role", ["siswa", "admin"])
                 submit_add = st.form_submit_button("Tambah")
                 if submit_add:
                     insert_user(username_new, password_new, role_new)
@@ -122,7 +122,7 @@ def admin_page():
                 user_id = st.text_input("ID User")
                 username = st.text_input("Username Baru")
                 password = st.text_input("Password Baru")
-                role = st.selectbox("Role Baru", ["user", "admin"])
+                role = st.selectbox("Role Baru", ["siswa", "admin"])
                 submit_edit = st.form_submit_button("Perbarui")
                 if submit_edit:
                     update_user(user_id, username, password, role)
